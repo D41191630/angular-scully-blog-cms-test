@@ -69,27 +69,27 @@ stages:
   condition: and(eq(variables['build.sourceBranch'], 'refs/heads/dev'), or(succeeded( 'Source_Build' ), succeeded( 'Assets_Build' ), succeeded( 'Full_Build' )))
   jobs:
   - template: CMS/CMS_dev_stage_build.yml
-- stage: Qa
-  displayName: 'Qa'
-  dependsOn: 
-  - Source_Build
-  - Assets_Build
-  - Full_Build
-  - CMS
-  condition: and(eq(variables['build.sourceBranch'], 'refs/heads/qa'), or(succeeded( 'Source_Build' ), succeeded( 'Assets_Build' ), succeeded( 'Full_Build' )))
-  jobs:
-  - template: CMS/CMS_qa_stage_build.yml
-#      parameters:
-#        student:  ${{ parameters.student }}
-- stage: Prod
-  displayName: 'Prod'
-  dependsOn: 
-  - Source_Build
-  - Assets_Build
-  - Full_Build
-  - CMS
-  condition: and(eq('${{ parameters.student }}', true), or(succeeded( 'Source_Build' ), succeeded( 'Assets_Build' ), succeeded( 'Full_Build' )))
-  jobs:
-  - template: CMS/CMS_prod_stage_build.yml
-    parameters:
-      student:  ${{ parameters.student }}
+# - stage: Qa
+#   displayName: 'Qa'
+#   dependsOn: 
+#   - Source_Build
+#   - Assets_Build
+#   - Full_Build
+#   - CMS
+#   condition: and(eq(variables['build.sourceBranch'], 'refs/heads/qa'), or(succeeded( 'Source_Build' ), succeeded( 'Assets_Build' ), succeeded( 'Full_Build' )))
+#   jobs:
+#   - template: CMS/CMS_qa_stage_build.yml
+# #      parameters:
+# #        student:  ${{ parameters.student }}
+# - stage: Prod
+#   displayName: 'Prod'
+#   dependsOn: 
+#   - Source_Build
+#   - Assets_Build
+#   - Full_Build
+#   - CMS
+#   condition: and(eq('${{ parameters.student }}', true), or(succeeded( 'Source_Build' ), succeeded( 'Assets_Build' ), succeeded( 'Full_Build' )))
+#   jobs:
+#   - template: CMS/CMS_prod_stage_build.yml
+#     parameters:
+#       student:  ${{ parameters.student }}
